@@ -11,6 +11,8 @@ source:
 
 build:
   number: 0
+  # missing libjpeg-turbo for s390x
+  skip: True  # [s390x]
   run_exports:
     - {{ pin_subpackage('qpdf') }}
 
