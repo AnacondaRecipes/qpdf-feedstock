@@ -23,7 +23,7 @@ requirements:
     - cmake
     - ninja
   host:
-    - libjpeg-turbo
+    - jpeg
     - openssl
     - zlib
 
