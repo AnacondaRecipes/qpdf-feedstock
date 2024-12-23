@@ -31,7 +31,7 @@ test:
   commands:
     - which qpdf     # [unix]
     - where qpdf     # [win]
-    - qpdf --help    # [build_platform == target_platform]
+    - qpdf --help
 
 about:
   home: https://qpdf.sourceforge.io/
