@@ -24,7 +24,7 @@ if [[ "$(uname)" == "Linux" ]]; then
     export LD_LIBRARY_PATH=${PREFIX}/lib:$PATH
     export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig:$PKG_CONFIG_PATH
     export CMAKE_PREFIX_PATH=${PREFIX}
-    ./pkg-test/run-all
+    $SRC_DIR/pkg-test/run-all
 fi
 
 popd  # Leave `build_release`
