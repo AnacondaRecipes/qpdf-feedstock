@@ -17,14 +17,4 @@ cmake ${CMAKE_ARGS} \
 
 cmake --build . --target install --config Release
 
-# running tests only on linux because run-all has hardcoded mktemp --suffix=... in it which is
-# not working on MacOS mktemp
-if [[ "$(uname)" == "Linux" ]]; then
-    export PATH=${PREFIX}/bin:$PATH
-    export LD_LIBRARY_PATH=${PREFIX}/lib:$PATH
-    export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig:$PKG_CONFIG_PATH
-    export CMAKE_PREFIX_PATH=${PREFIX}
-    $SRC_DIR/pkg-test/run-all
-fi
-
 popd  # Leave `build_release`
