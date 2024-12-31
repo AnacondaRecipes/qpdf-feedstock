@@ -21,6 +21,8 @@ requirements:
     - cmake
     - ninja
   host:
+    - {{ compiler("c") }}    # [linux]
+    - {{ compiler("cxx") }}  # [linux]
     - jpeg
     - openssl
     - zlib
