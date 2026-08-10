@@ -1,13 +1,13 @@
 {% set name = "qpdf" %}
-{% set version = "11.9.1" %}
+{% set version = "12.3.2" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://github.com/qpdf/qpdf/releases/download/v{{ version }}/qpdf-{{ version }}.tar.gz
-  sha256: 2ba4d248f9567a27c146b9772ef5dc93bd9622317978455ffe91b259340d13d1
+  url: https://github.com/{{ name }}/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 11ac1800f0d7334863fa1fce6a8b87b105897610bb6a25b9b883ba3f9f1aa4d7
 
 build:
   number: 0
@@ -16,12 +16,18 @@ build:
 
 requirements:
   build:
-    - {{ compiler("c") }}
-    - {{ compiler("cxx") }}
+    - {{ stdlib('c') }}
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - cmake
-    - ninja
+    - ninja-base
   host:
-    - jpeg
+    - libjpeg-turbo {{ libjpeg_turbo }}
+    - openssl {{ openssl }}
+    - zlib {{ zlib }}
+  run:
+    # Through the run exports
+    - libjpeg-turbo
     - openssl
     - zlib
 
@@ -32,7 +38,7 @@ test:
     - qpdf --help
 
 about:
-  home: https://qpdf.sourceforge.io/
+  home: https://qpdf.sourceforge.io
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE.txt
@@ -47,7 +53,7 @@ about:
     care off all the syntactical representation of the objects, creation of
     cross references tables and, if you use them, object streams, encryption,
     linearization, and other syntactic details.
-  doc_url: https://qpdf.readthedocs.io/
+  doc_url: https://qpdf.readthedocs.io
   dev_url: https://github.com/qpdf/qpdf
 
 extra:
